@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     # Api Apps...
     'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,33 @@ EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = 'rygbuhcsuthnqcyo'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL='MovieTV Website'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+
+    'DEFAULT_THROTTLE_RATES': {
+        'question':'5/minute'
+    },
+    # Swagger...
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project Django Tv API',
+    'DESCRIPTION': 'Your project Django Tv',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}

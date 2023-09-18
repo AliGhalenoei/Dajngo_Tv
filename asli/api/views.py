@@ -33,6 +33,9 @@ class SingupAPIView(APIView):
 
 # CRUD Category Api...
 class ListCategoryAPIView(APIView):
+    """
+        Test Api....
+    """
     serializer_class = CategorySerializer
 
     def get(self,request):
@@ -50,6 +53,9 @@ class RetrieveCategoryAPIView(APIView):
         return Response(data=srz_data.data)
     
 class UpdateCategoryAPIView(APIView):
+    """
+        Test Api....
+    """
     serializer_class = CategorySerializer
 
     def get(self,request,slug):
@@ -67,6 +73,9 @@ class UpdateCategoryAPIView(APIView):
         return Response(srz_data.errors)
     
 class DeleteCategoryAPIView(APIView):
+    """
+        Test Api....
+    """
     serializer_class = CategorySerializer
 
     def get(self,request,slug):
@@ -76,18 +85,33 @@ class DeleteCategoryAPIView(APIView):
         return Response({'massage':'Category Deleted...'})
     
 # CRUD Movie Api...
+"""
+        Test Api....
+    """
 class ListCreateMovieAPIView(ListCreateAPIView):
+    throttle_scope = ('question')
+    throttle_scope = ('question')
+
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     
     
 class RetrieveUpdateDestroyMovieAPIView(RetrieveUpdateDestroyAPIView):
+    """
+        Test Api....
+    """
+    throttle_scope = ('question')
+    throttle_scope = ('question')
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     lookup_field='slug'
 
 # CRUD Seryals...
 class CRUD_SeryalMovieAPIView(viewsets.ViewSet):
+    """
+        Test Api....
+    """
+    throttle_scope = ('question')
     queryset=SeryalMovie.objects.all()
     serializer_class=SeryalMovieSerializer
 
@@ -124,33 +148,55 @@ class CRUD_SeryalMovieAPIView(viewsets.ViewSet):
 
 # Like Seryal And Movies...
 class ListCreateLikeMovieAPIView(ListCreateAPIView):
+    """
+        Test Api....
+    """
     queryset = LikeMovie.objects.all()
     serializer_class = LikeMovieSerializer
 
 class ListCreateLikeSeryalMovieAPIView(ListCreateAPIView):
+    """
+        Test Api....
+    """
     queryset = LikeSeryal.objects.all()
     serializer_class = LikeSeryalMovieSerializer
 
 # Comments Seryal And Movies...
 class CommentMovieAPIView(ListCreateAPIView):
+    """
+        Test Api....
+    """
     queryset = Comment.objects.all()
     serializer_class = CommentMovieSerializer
 
 class RetrieveUpdateDestroyCommentMovieAPIView(RetrieveUpdateDestroyAPIView):
+    """
+        Test Api....
+    """
     queryset = Comment.objects.all()
     serializer_class = CommentMovieSerializer
 
 class CommentSeryalMovieAPIView(ListCreateAPIView):
+    """
+        Test Api....
+    """
     queryset = CommentSeryal.objects.all()
     serializer_class = CommentSeryalMovieSerializer
 
 class RetrieveUpdateDestroyCommentSeryalMovieAPIView(RetrieveUpdateDestroyAPIView):
+    """
+        Test Api....
+    """
     queryset = CommentSeryal.objects.all()
     serializer_class = CommentSeryalMovieSerializer
     
             
 
 class HomeAPIView(APIView):
+    """
+        Test Api....
+    """
+    throttle_scope = ('question')
     template_name='content/home.html'
 
     def get(self,request):
@@ -196,6 +242,9 @@ class HomeAPIView(APIView):
     
 # List Trend Movies...
 class ListTrendMoviesAPIView(APIView):
+    """
+        Test Api....
+    """
     template_name='content/list_trend_movies.html'
 
     def get(self,request):
