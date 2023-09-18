@@ -1,0 +1,67 @@
+.form_login {
+    text-align: center;
+    background-color: black;
+    width: 450px;
+    margin-left: 300px;
+    border-radius: 10px;
+}
+
+.text_dj_tv {
+    border-radius: 10px;
+    background-color: rgb(1, 1, 1);
+    padding: 10px;
+}
+
+.input_form {
+    width: 430px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input_form:hover {
+    border: 3px solid rgb(38, 156, 240);
+}
+
+.forget {
+    color: aliceblue;
+    text-align: left;
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -75px;
+}
+
+.forget:hover {
+    color: aquamarine;
+}
+
+.singin {
+    color: aliceblue;
+    text-align: left;
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+    right: -105px;
+}
+
+.singin:hover {
+    color: aquamarine;
+    position: relative;
+    transition: all 0.4s;
+}
+
+.btn_login {
+    width: 450px;
+    position: relative;
+    top: -30px;
+    padding: 10px;
+    background-color: rgb(0, 111, 215);
+}
+
+.btn_login:hover {
+    background-color: aquamarine;
+    position: relative;
+    top: -10px;
+    box-shadow: 0px 0px 80px -25px rgba(179, 179, 179, 0.5);
+    transition: all 0.4s;
+}

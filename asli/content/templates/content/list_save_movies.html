@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Page|Saves {% endblock %}
+
+
+{% block body %} 
+<br><br><br><br>
+
+{% for img in movies %}
+<a href="{% url 'detail_movies' img.movie.slug %}">
+  <div class="card" style="display: inline-block;">
+    <div class="image">
+      <img src="{{img.movie.img.url}}" />
+    </div>
+    <div class="details">
+      <div class="center">
+        <h1>{{img.movie.name}}<br></h1><br>
+        <a href="{% url 'unsave' img.movie.slug %}" style="color: black;"> Remove</a>
+      </div>
+    </div>
+  </div>
+</a>
+{%endfor%} 
+
+{% for img in seryals %}
+<a href="{% url 'detail_seryal_movies' img.movie.id %}">
+  <div class="card" style="display: inline-block;">
+    <div class="image">
+      <img src="{{img.movie.img.url}}" />
+    </div>
+    <div class="details">
+      <div class="center">
+        <h1>{{img.movie.name}}<br></h1><br>
+        <a href="{% url 'unsave_seryal' img.movie.slug %}" style="color: black;"> Remove</a>
+      </div>
+    </div>
+  </div>
+</a>
+{%endfor%} <br><br>
+
+
+{% endblock %}

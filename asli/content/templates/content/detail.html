@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="{% static 'content/css/detail.css'%}">
+  <title>Document</title>
+
+
+</head>
+
+<body style="background-color: rgb(18, 18, 18)">
+  {% include 'include/nav.html' %}
+  <br><br>
+  <!-- Detail Card -->
+  <div class="card">
+    <div class="img_card">
+      <img src="{{movie.img.url}}" alt="">
+    </div>
+
+    <div class="detail_movies">
+      <h5 class="h5_detail_movies">{{movie.name}}|{{movie.date}}</h5><br>
+      <small style="color: aliceblue;">{{movie.worning}} | {{movie.time}}</small><br><br><br>
+
+      <p style="color: aliceblue;">{{movie.abut}}</p>
+    </div>
+    <a href="{% url 'save' movie.slug %}"> <img src="{% static 'content/images/icons8-save-50.png'%}" alt="" style="vertical-align: top; float: right; width: 30px;" class="img_save"> </a>
+    <a href="{% url 'like_movie' movie.slug %}"> <img src="{% static 'content/images/icons8-like-50 (1).png'%}" alt="" style="vertical-align: top; float: right; width: 30px;" class="img_like"> </a>
+    <a href="{% url 'play_movie' movie.slug %}" class="btn btn-primary" style="display: block;">Play</a>
+  </div>
+
+  <br><br><br>
+    <!-- Random Movies -->
+    {% for movie in random_movies %}
+  <a href="{% url 'detail_movies' movie.slug %}">
+    <div class="card_random" style="margin-left: 14px;">
+        <img src="{{movie.img.url}}" alt="">
+    </div>
+  </a>
+  {%endfor%}
+
+  <br><br><br>
+
+  <!-- Comment Movies... -->
+  <div class="comment_card" style="margin-left: 35px;">
+    <form action="" method="post">
+      {%csrf_token%}
+      <input class="form-control me-2" type="search" placeholder="comments..." aria-label="Search" name="comment"><br>
+      <button class="btn btn-outline-success" type="submit">Send</button>
+    </form> <br>
+
+    
+      {% for msg in comments %}
+        <div class="msg" >
+          <small style="position: relative; right: -12px;">User |{{msg.created}} :</small><br><br>
+          <p style="display: inline-block;">{{msg.comment}}</p>
+          {% if request.user == msg.user %}
+          <a href="{% url 'update_comment' msg.id %}" class="btn btn-primary" style="float: right; margin-right: 10px; position: relative; top: -10px;">Update</a> 
+          <a href="{% url 'delete_comment' msg.id %}" class="btn btn-danger" style="float: right; margin-right: 10px; position: relative; top: -10px;">Delete</a> 
+          {%endif%}
+        </div><br>
+      {%endfor%}
+    
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.card_category{
+    width: 30%;
+    padding: 5px;
+    display: inline-block;
+    background-color:rgb(18, 18, 18);
+    margin: 10px;
+}
+
+.card_category:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 0px 80px -25px rgba(179, 179, 179, 0.5);
+    transition: all 0.4s;
+}
+
+.img{
+    width: 296px;
+}

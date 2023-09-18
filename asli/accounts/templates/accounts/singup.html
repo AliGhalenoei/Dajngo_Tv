@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'accounts/css/singup.css' %}">
+</head>
+<body style="background-color: rgb(18, 18, 18);">
+    
+    
+<br><br>
+
+<div class="form_login">
+    <div class="text_dj_tv">
+        <h1 style="color: aqua;">Django Tv</h1>
+    </div><br>
+    <form action="" method="post">
+        {%csrf_token%}
+
+        <input type="text" placeholder="Enter your phone" class="input_form" name="phone"> <br><br>
+        <input type="email" placeholder="Enter your email" class="input_form" name="email"> <br><br>
+        <input type="text" placeholder="Enter your password" class="input_form" name="password"> <br><br>
+        <input type="text" placeholder="Enter your Confirm password" class="input_form" name="password2"> <br><br>
+
+        <a href="{% url 'login' %}"  class="forget" > <h6 style="display: inline-block;">I have account</h6></a>
+        <a href="#"  class="singin" > <h6 style="display: inline-block;">I dont Account?</h6></a><br><br><br><br><br><br><br><br><br>
+        <input type="submit" value="Login" class="btn_login"><br>
+    </form>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>
